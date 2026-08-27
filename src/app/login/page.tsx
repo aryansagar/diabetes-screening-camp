@@ -56,7 +56,7 @@ export default function LoginPage() {
                     {/* LOGO */}
                     <div className="absolute left-3 flex items-center sm:left-6">
                         <Image
-                            src="/Lions.png"
+                            src="/Lions.svg"
                             alt="Lions Clubs International"
                             width={100}
                             height={70}
