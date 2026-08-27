@@ -108,19 +108,6 @@ export default function DashboardPage() {
 
                 <div className="mx-auto w-full max-w-[1400px] overflow-hidden rounded-xl bg-white shadow">
 
-                    {/* TITLE */}
-                    <div className="border-b px-4 py-4 sm:px-6 sm:py-5">
-
-                        <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
-                            Patient Details
-                        </h2>
-
-                        <p className="mt-1 text-xs text-gray-500 sm:text-sm">
-                            Total Patients: {patients.length}
-                        </p>
-
-                    </div>
-
                     {/* LOADING */}
                     {loading ? (
                         <div className="p-8 text-center text-sm text-gray-500 sm:p-10">

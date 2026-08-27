@@ -41,16 +41,7 @@ export default function RegistrationPage() {
 
     if (
       !form.name ||
-      !form.contact_no ||
-      !form.gender ||
-      !form.age ||
-      !form.address ||
-      !form.bmi ||
-      !form.weight ||
-      !form.bp ||
-      !form.random_blood_sugar ||
-      !form.hba1c ||
-      !form.known_diabetes
+      !form.contact_no 
     ) {
       toast.error("Please fill all fields.");
       return;
