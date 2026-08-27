@@ -22,33 +22,51 @@ export default function Header() {
                 .from("patients")
                 .select("*")
                 .order("created_at", { ascending: true });
-
+    
             if (error) {
                 console.error("Export error:", error);
                 alert("Unable to export patient data.");
                 return;
             }
-
+    
             if (!data || data.length === 0) {
                 alert("No patient data available to export.");
                 return;
             }
-
-            const worksheet = XLSX.utils.json_to_sheet(data);
-
+    
+            // Select only the columns you want in Excel
+            const excelData = data.map((patient, index) => ({
+                "S.No": index + 1,
+                "Name": patient.name,
+                "Contact No.": patient.contact_no,
+                "Gender": patient.gender,
+                "Age": patient.age,
+                "Address": patient.address,
+                "BMI": patient.bmi,
+                "Weight (kg)": patient.weight,
+                "BP": patient.bp,
+                "Random Blood Sugar": patient.random_blood_sugar,
+                "HbA1c": patient.hba1c,
+                "Known Diabetes": patient.known_diabetes
+                    ? "Yes"
+                    : "No",
+            }));
+    
+            const worksheet = XLSX.utils.json_to_sheet(excelData);
+    
             const workbook = XLSX.utils.book_new();
-
+    
             XLSX.utils.book_append_sheet(
                 workbook,
                 worksheet,
                 "Patients"
             );
-
+    
             XLSX.writeFile(
                 workbook,
                 "diabetes-screening-patients.xlsx"
             );
-
+    
         } catch (error) {
             console.error("Excel export error:", error);
             alert("Something went wrong while exporting.");
